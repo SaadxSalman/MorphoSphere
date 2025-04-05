@@ -1,1 +1,0 @@
-Evaluate the model's performance using appropriate metrics (e.g., accuracy, precision, recall, RMSE).

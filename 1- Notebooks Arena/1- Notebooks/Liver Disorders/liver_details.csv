@@ -1,8 +1,0 @@
-Variable Name,Role,Type,Demographic,Description,Units,Missing Values
-mcv,Feature,Continuous,,mean corpuscular volume,,no
-alkphos,Feature,Continuous,,alkaline phosphotase,,no
-sgpt,Feature,Continuous,,alanine aminotransferase,,no
-sgot,Feature,Continuous,,aspartate aminotransferase,,no
-gammagt,Feature,Continuous,,gamma-glutamyl transpeptidase,,no
-drinks,Target,Continuous,,number of half-pint equivalents of alcoholic beverages drunk per day,,no
-selector,Other,Categorical,,field created by the BUPA researchers to split the data into train/test sets,,no
