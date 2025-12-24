@@ -17,11 +17,17 @@ An AI agent for video games that learns and adapts like a human player. Gemini-G
 
 ## ⚙️ Tech Stack
 
-  * **Core Logic:** Rust
-  * **Learning Framework:** GRPO (Generalized Policy Iteration)
-  * **High-Level Strategy:** Gemma-3
-  * **Vision Model:** Custom-trained vision model
-  * **Embeddings:** Custom embeddings model
+* **Core Logic:** Rust
+* **Learning Framework:** GRPO (Generalized Policy Iteration)
+* *High-Level Strategy:** Gemma-3
+* **Vision Model:** Custom-trained vision model
+* **Embeddings:** Custom embeddings model
+* **Web Dashboard (MERN Evolution):**
+    * **Framework:** Next.js (React)
+    * **Language:** TypeScript
+    * **Styling:** Tailwind CSS
+    * **Database:** MongoDB
+    * **Backend:** Node.js / Express.js
 
 -----
 
