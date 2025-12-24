@@ -91,3 +91,59 @@ Run the main executable and point it to the game's video stream to begin the rea
 
 -----
 
+Here is the finalized, comprehensive file structure for **Gemini-Game**. This organization separates the high-performance Rust core, the Python AI services, the Node.js orchestration layer, and the Next.js frontend into a clean, professional monorepo.
+
+### 📂 Project Structure
+
+```text
+Gemini-Game/
+├── core-engine/                # RUST: High-performance Execution
+│   ├── src/
+│   │   ├── main.rs             # Agent orchestrator & Loop
+│   │   ├── perception.rs       # OpenCV Screen capture & Vision API client
+│   │   ├── controller.rs       # Input simulation (Keyboard/Mouse)
+│   │   └── state_bridge.rs     # HTTP/WS Client to send telemetry to Brain-API
+│   ├── Cargo.toml              # Dependencies: opencv, enigo, tokio, reqwest
+│   └── .env                    # Local Rust configs
+│
+├── brain-api/                  # NODE.JS/TS: Orchestration & Data
+│   ├── src/
+│   │   ├── models/
+│   │   │   └── Session.ts      # MongoDB Schema (Decisions, Thoughts, Rewards)
+│   │   ├── lib/
+│   │   │   └── websocket.ts    # Socket.io setup for Dashboard syncing
+│   │   ├── routes/
+│   │   │   ├── telemetry.ts    # Receives data from Rust
+│   │   │   └── reward.ts       # Endpoint for Manual/AI feedback
+│   │   └── server.ts           # Express entry point
+│   ├── package.json
+│   └── tsconfig.json
+│
+├── dashboard/                  # NEXT.JS: Real-time UI
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── page.tsx        # Main Live Monitor View
+│   │   │   └── layout.tsx      # Global Styles & Providers
+│   │   ├── components/
+│   │   │   ├── ThoughtStream.tsx # Scrolling list of Gemma-3 thoughts
+│   │   │   ├── RewardButton.tsx  # Feedback buttons for GRPO
+│   │   │   └── StatsChart.tsx    # Recharts for Health/Performance
+│   │   └── lib/
+│   │       └── socket-client.ts # Socket.io initialization
+│   ├── tailwind.config.ts
+│   └── next.config.js
+│
+├── models/                     # PYTHON: AI Inference & Learning
+│   ├── inference_server.py     # FastAPI: Gemma-3 & Vision Model server
+│   ├── training_agent.py       # GRPO logic: Reward calculation & weight updates
+│   ├── utils/
+│   │   └── embeddings.py       # Custom vector space logic
+│   └── requirements.txt        # torch, transformers, fastapi, pymongo
+│
+├── .env                        # Global: API Keys (GEMMA_API_KEY, MONGO_URI)
+├── docker-compose.yml          # Optional: To spin up MongoDB and API quickly
+└── README.md                   # Project documentation
+
+```
+
+---
