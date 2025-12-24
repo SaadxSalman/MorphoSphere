@@ -17,17 +17,45 @@ An AI agent for video games that learns and adapts like a human player. Gemini-G
 
 ## ⚙️ Tech Stack
 
-* **Core Logic:** Rust
-* **Learning Framework:** GRPO (Generalized Policy Iteration)
-* *High-Level Strategy:** Gemma-3
-* **Vision Model:** Custom-trained vision model
-* **Embeddings:** Custom embeddings model
-* **Web Dashboard (MERN Evolution):**
-    * **Framework:** Next.js (React)
-    * **Language:** TypeScript
-    * **Styling:** Tailwind CSS
-    * **Database:** MongoDB
-    * **Backend:** Node.js / Express.js
+#### 1. Core Engine (The "Body")
+
+* **Language:** **Rust** (Edition 2024) — Chosen for memory safety and zero-cost abstractions during high-frequency game loops.
+* **Perception:** **OpenCV (Rust Bindings)** — Used for real-time frame capturing and basic image preprocessing (resizing to  for Gemma-3 compatibility).
+* **Input Simulation:** **Enigo** — Simulates low-level OS events for mouse and keyboard without being detected by basic anti-cheat software.
+* **Networking:** **Tokio + Reqwest** — Asynchronous runtime to handle non-blocking API calls to the Brain-API.
+
+#### 2. Intelligence Layer (The "Brain")
+
+* **Strategic Model:** **Gemma-3 (4B or 12B variant)** — A multimodal model that natively understands images and text. It processes game frames as "soft tokens" to generate high-level strategy.
+* **Learning Framework:** **GRPO (Group Relative Policy Optimization)** — Implemented in Python via the **TRL (Transformer Reinforcement Learning)** library.
+* *Why GRPO?* It eliminates the need for a separate "Value Model," making it 50% more memory-efficient than PPO for training gaming agents on a single GPU.
+
+
+* **Inference:** **FastAPI + vLLM** — Provides a high-throughput OpenAI-compatible endpoint for the Rust core.
+
+#### 3. Orchestration & Data (The "Memory")
+
+* **Runtime:** **Node.js (v22+)** with **TypeScript**.
+* **Database:** **MongoDB** — Stores "Decision Objects" which contain the state (), the action (), the raw "thought" from Gemma-3, and the reward () used for GRPO.
+* **Real-time Bridge:** **Socket.io** — Streams the agent's internal reasoning (the `<think>` tags) from the backend directly to the dashboard.
+
+#### 4. Web Dashboard (The "Interface")
+
+* **Framework:** **Next.js 15** (App Router).
+* **Styling:** **Tailwind CSS** + **Shadcn/UI** — For a high-performance, dark-themed "Command Center" aesthetic.
+* **Visualization:** **Recharts** — To plot reward curves and "Confidence" levels of the agent in real-time.
+
+---
+
+### 📊 Summary Table
+
+| Layer | Technology | Primary Function |
+| --- | --- | --- |
+| **Execution** | Rust |  screen capture & input |
+| **Cognition** | Gemma-3 | Visual reasoning & Strategy planning |
+| **Optimization** | GRPO | Learning from group-relative rewards |
+| **Storage** | MongoDB | Logging trajectory data for training |
+| **Monitoring** | Next.js | Live "Thought Stream" & Manual Override |
 
 -----
 
