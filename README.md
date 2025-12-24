@@ -57,12 +57,3 @@ Run the main executable and point it to the game's video stream to begin the rea
 
 -----
 
-## 🤝 Contributing
-
-We welcome contributions from game developers, AI researchers, and gamers. Please read our [CONTRIBUTING.md](https://www.google.com/search?q=https://github.com/saadsalmanakram/Gemini-Game/blob/main/CONTRIBUTING.md) for details on how to get involved.
-
------
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](https://www.google.com/search?q=https://github.com/saadsalmanakram/Gemini-Game/blob/main/LICENSE) file for details.
