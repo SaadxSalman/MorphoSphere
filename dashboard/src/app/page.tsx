@@ -23,4 +23,29 @@ export default function Home() {
       </div>
     </main>
   );
+
+  // Inside your Home component
+  const [thoughts, setThoughts] = useState<any[]>([]);
+
+  useEffect(() => {
+    const socket = io('http://localhost:5000');
+    socket.on('agent-thought', (data) => {
+      setThoughts((prev) => [data, ...prev].slice(0, 5)); // Keep last 5
+    });
+  }, []);
+
+  return (
+    <div className="grid grid-cols-1 gap-4">
+      {thoughts.map((t, i) => (
+        <div key={i} className="p-4 bg-zinc-900 border-l-4 border-blue-500 rounded">
+          <p className="text-xs text-zinc-500">{new Date(t.timestamp).toLocaleTimeString()}</p>
+          <p className="font-mono text-green-400 mt-2">Action: {t.strategy.chosenAction}</p>
+          <p className="text-zinc-300 italic text-sm mt-1">"{t.strategy.rawThought}"</p>
+        </div>
+      ))}
+    </div>
+  );
+
 }
+  
+
