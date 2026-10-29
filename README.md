@@ -1051,6 +1051,4 @@ MIT License — see LICENSE file (to be added).
 
 *MorphoSphere — Understanding code through structure, not just text.*
 
-**Built with ❤️ by the MorphoSphere team.**
-
 *Repository: https://github.com/SaadxSalman/MorphoSphere*
