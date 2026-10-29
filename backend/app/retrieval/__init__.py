@@ -1,0 +1,1 @@
+"""Retrieval engine package for hybrid pattern-semantic search."""

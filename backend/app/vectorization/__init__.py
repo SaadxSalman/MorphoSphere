@@ -1,0 +1,1 @@
+"""Vectorization package for semantic and topological embeddings."""
